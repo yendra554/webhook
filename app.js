@@ -18,7 +18,7 @@ console.log("vikas")
  const  data1="${sender}: ${message}";
 
   const data = "sfdgdgfgfgfd"; 
-  fs.writeFileSync('log.text', data); 
+  fs.writeFileSync('https://wbhkapp.herokuapp.com/log.text', data); 
 
   res.sendStatus(200);
 
