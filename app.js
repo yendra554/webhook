@@ -25,10 +25,7 @@ console.log("vikas")
   
 });
 
-// start the server
-// app.listen(3000, () => {
-//   console.log('WhatsApp webhook server listening on port 3000');
-// });
+
 
 
 var server = app.listen(process.env.PORT || 3000, function () {
