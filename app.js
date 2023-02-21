@@ -2,11 +2,8 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 require('dotenv').config();
-// const dbHost = process.env.DB_HOST;
-// const dbUser = process.env.DB_USER;
-// const dbPass = process.env.DB_PASS;
-// console.log("dbHost", dbHost)
-// parse incoming JSON data
+const axios = require('axios');
+const fs = require('fs'); 
 console.log("vikas")
 app.use(bodyParser.json());
 
@@ -18,8 +15,14 @@ console.log("vikas")
   // do something with the incoming message and sender information
   console.log(`Received WhatsApp message from ${sender}: ${message}`);
 
-  // send a response to the WhatsApp API
+ const  data1="${sender}: ${message}";
+
+  const data = "sfdgdgfgfgfd"; 
+  fs.writeFileSync('log.text', data); 
+
   res.sendStatus(200);
+
+  
 });
 
 // start the server
