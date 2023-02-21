@@ -1,7 +1,7 @@
 data = file_get_contents("php://input");
 event = json_decode(data, true);
 if (typeof event !== 'undefined') {
-    file = 'log.txt';
+    file = 'https://wbhkapp.herokuapp.com/log.txt';
     data = json_encode(event)+"\n";
     pData = {'name':_REQUEST["remoteJid"],'imgmsg':"imgmsg",'msg':"testing",'key':"fb868c1cda731b25e15fc4fa28cb3385",'number':"917428322239"};
     opts1 = {'http':{'method':'POST','header':'Content-type: application/json','content':json_encode(pData)}};
