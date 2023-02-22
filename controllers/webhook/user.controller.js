@@ -10,10 +10,9 @@ var data={
     
         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
         "sender": 919354869926,
-        "number": req.body.number,
-        // "number": 917428322239,
-        // "message": 1,
-        "message": req.body.message,
+        "number":req.body.from,
+         "message": req.body.message,
+        //  "message": 2,
       
 }
 const obj=getDataObject(data)
@@ -51,21 +50,21 @@ function getDataObject(data1){
 
 
     if(data1.message=='1'){
-
         data1={
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": 919354869926,
-            "number": data1.number,
-            "message": "hello welcom"
+            "number":data1.number,
+            "message": "Please Select the options",
+           
+                                                    
         }
     }else if(data1.message=='2'){
         data1={
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": 919354869926,
-            "number": data1.number,
-            
+            "number":data1.number,
             "footer": "ok",
-            "message": "Please Select the options",
+            "message": "Please Select the options dsfsdf",
             "name": "Menu",
              "title":"Account creation",
              "list1":"list 1",
