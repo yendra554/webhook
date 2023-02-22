@@ -6,8 +6,14 @@ const axios = require('axios');
 
 
 exports.sendMessage = async (req, res, next) => {
-    console.log("dfdgfhfhgwetertreter", req)
-   axios.post('https://watzapi.in/send-message',req)
+//    req={
+//     "api_key":'2dv2PJ4X196rOeHM7sWN2CKFf3uy1I',
+//     "sender": 919354869926,
+//     "number": 917428322239,
+//     "message": "message asdsfgdgd"
+//   }
+console.log("req.bodyreq.body", req.body)
+   axios.post('https://watzapi.in/send-message',req.body )
   .then(response => {
     res.json({
                         status: true,
