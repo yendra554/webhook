@@ -56,7 +56,7 @@ function getDataObject(data1){
         data1={
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": 919354869926,
-            "number": 917428322239,
+            "number": req.body.from,
             
             "footer": "ok",
             "message": "Please Select the options",
