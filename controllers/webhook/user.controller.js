@@ -56,7 +56,7 @@ function getDataObject(data1){
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": 919354869926,
             "number": data1.number,
-            "message": "send message"
+            "message": "hello welcom"
         }
     }else if(data1.message=='2'){
         data1={
