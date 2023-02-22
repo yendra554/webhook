@@ -6,111 +6,72 @@ const axios = require('axios');
 
 
 exports.sendMessage = async (req, res, next) => {
-//    req={
-//     "api_key":'2dv2PJ4X196rOeHM7sWN2CKFf3uy1I',
-//     "sender": 919354869926,
-//     "number": 917428322239,
-//     "message": "message asdsfgdgd"
-//   }
-console.log("req.bodyreq.body", req.body)
-   axios.post('https://watzapi.in/send-message',req.body )
+const data={
+    
+        "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+        "sender": 919354869926,
+        "number": req.body.from,
+        "message": req.body.message,
+      
+}
+const obj=getDataObject(data)
+const url=getURL(data)
+
+   axios.post(url,obj )
   .then(response => {
     res.json({
                         status: true,
-                        message: "Signup Successfully !"
+                        message: "Message deliver successfully"
                     });
   })
   .catch(error => {
-    res.json({
-        status: false,
-        message: error
-    });
+   res.json(error)
   });
 }
 
-// exports.signup = async (req, res) => {
-   
-//     try {
-        
-//         const users = await new user(req.body);
-   
-//         const finduser = await user.find({ email: req.body.email });
+
+function getURL(data1){
+
+    if(data1.message=='1'){
+        url="https://watzapi.in/send-message"
+    }else if(data1.message=='2'){
+       url=" https://watzapi.in/send-list"
     
-//         if (finduser.length >= 1) {
+    }
+    else{
+       url="3"
+    }
+     return url
 
-//             return res.status(500).json({
-//                 status: false,
-//                 message: "email already exists please use other email address !"
-//             })
+}
 
-//         }
-
-//         const pass = await bcrypt.hash(req.body.password, saltRounds);
-
-//         users.password = pass;
-
-//         const newuser = await users.save();
-//         if(newuser._id){
-//             res.json({
-//                 status: true,
-//                 message: "Signup Successfully !"
-//             });
-//         }else{
-//             res.status(400).json({
-//                 message: "All fields are required !"
-//             });
-//         }
-
-//     } catch (error) {
-//         res.status(400).json({
-//             message: "Something went wrong."
-//         });
-//     }
+function getDataObject(data1){
 
 
-// }
+    if(data1.message=='1'){
+        data1.message="1"
+    }else if(data1.message=='2'){
+        data1={
+            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+            "sender": 919354869926,
+            "number": 917428322239,
+            
+            "footer": "ok",
+            "message": "Please Select the options",
+            "name": "Menu",
+             "title":"Account creation",
+             "list1":"list 1",
+             "list2":"option 2",
+             "list3":"option 3",
+             "list4":"option 4"
+                                                    
+        }
+    
+    }
+    else{
+        data1.message="3"
+    }
+     return data1
+   
 
-// exports.login = (req, res) => {
-
-//     user.findOne({ email: req.body.email })
-//         .then(users => {
-//             if (!users.email) {
-//                 return res.status(404).json({
-//                     message: "email address doesn't exist"
-//                 })
-//             }
-
-//             let userData = users
-
-//             bcrypt.compare(req.body.password, users.password, (err, result) => {
-
-//                 if (!result) {
-//                     return res.status(500).json({
-//                         message: "unAthorized User",
-//                         result
-//                     })
-//                 }
-
-//                 if (result) {
-
-//                     const token = jwt.sign({ userData }, 'secret', { expiresIn: "7d" });
-
-//                     return res.status(200).json({
-//                         status: true,
-//                         message: "Authentication Successful",
-//                         token: token,
-//                         userData
-//                     })
-//                 }
-
-//             });
-
-//         })
-//         .catch(err => {
-//             console.log(err);
-//             res.status(500).json({
-//                 error: err
-//             });
-//         });
-
-// }
+}
