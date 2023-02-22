@@ -4,11 +4,11 @@ const axios = require('axios');
 
 
 exports.sendMessage = async (req, res, next) => {
-    console.log("asdsdfdgfhfghffsfdhfgjhgfhgfjfghf")
+    
 var data={
     
         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-        "sender": 919354869926,
+        "sender": req.body.sender,
         "number": req.body.number,
          "message": req.body.message,
         //  "message": 2,
