@@ -51,12 +51,18 @@ function getDataObject(data1){
 
 
     if(data1.message=='1'){
-        data1.message="1"
+
+        data1={
+            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+            "sender": 919354869926,
+            "number": data1.from,
+            "message": "send message"
+        }
     }else if(data1.message=='2'){
         data1={
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": 919354869926,
-            "number": req.body.from,
+            "number": data1.from,
             
             "footer": "ok",
             "message": "Please Select the options",
