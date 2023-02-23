@@ -66,15 +66,15 @@ function getDataObject(data1){
             "message": "Please Select the options ",
             "name": "Menu",
              "title":"Account creation",
-             "list1":"option 1",
-             "list2":"option 2",
-             "list3":"option 3",
-             "list4":"option 4"
+             "list1":"option1",
+             "list2":"option2",
+             "list3":"option3",
+             "list4":"option4"
                                                     
         }
         
     
-    }else if(data1.message=='option 1'){
+    }else if(data1.message=='option1'){
         data1={
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": data1.sender,
