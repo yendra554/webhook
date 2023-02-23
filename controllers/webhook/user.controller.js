@@ -48,34 +48,57 @@ function getURL(data1){
 function getDataObject(data1){
 
 
-    if(data1.message=='1'){
+    if(data1.message=='hi'){
         data1={
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-            "sender": 919354869926,
+            "sender": data1.sender,
             "number":data1.number,
-            "message": "Please Select the options",
+            "message": "Wellcome to CRM. press 2 for our services",
            
                                                     
         }
     }else if(data1.message=='2'){
         data1={
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-            "sender": 919354869926,
+            "sender": data1.sender,
             "number":data1.number,
             "footer": "ok",
-            "message": "Please Select the options dsfsdf",
+            "message": "Please Select the options ",
             "name": "Menu",
              "title":"Account creation",
-             "list1":"list 1",
+             "list1":"option 1",
              "list2":"option 2",
              "list3":"option 3",
              "list4":"option 4"
                                                     
         }
+        
     
+    }else if(data1.message=='option 1'){
+        data1={
+            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+            "sender": data1.sender,
+            "number":data1.number,
+            "footer": "ok",
+            "message": "Please Select the options ",
+            "name": "Sub Menu",
+             "title":"Sub Menu",
+         
+             "list1":"option A",
+             "list2":"option B",
+             "list3":"option C"
+                                                    
+        }
     }
     else{
-        data1.message="3"
+        data1={
+            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+            "sender": data1.sender,
+            "number":data1.number,
+            "message": "Contact to our support team",
+           
+                                                    
+        }
     }
      return data1
    
