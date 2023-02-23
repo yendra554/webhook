@@ -74,7 +74,7 @@ function getDataObject(data1){
         }
         
     
-    }else if(data1.message=='id1'){
+    }else if(data1.sections.rows.rowId=='id1'){
         data1={
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": data1.sender,
