@@ -32,7 +32,7 @@ exports.sendMessage = async (req, res, next) => {
 
 function getURL(data1) {
 
-    if (data1.message == '1') {
+    if (data1.message == 'hi') {
         url = "https://watzapi.in/send-message"
     } else if (data1.message == '2') {
         url = " https://watzapi.in/send-list"
@@ -51,12 +51,12 @@ function getURL(data1) {
 function getDataObject(data1) {
 
 
-    if (data1.message == '1') {
+    if (data1.message == 'hi') {
         data1 = {
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": data1.sender,
             "number": data1.number,
-            "message": "Please Select the options",
+            "message": "Welcome to our Web Chat CRM",
 
 
         }
@@ -84,8 +84,8 @@ function getDataObject(data1) {
         "number":data1.number,
         "footer": "ok",
         "message": "Please Select the options ",
-        "name": "Menu",
-         "title":"Account creation",
+        "name": " Sub Menu",
+         "title":"Sub Menu",
          "list1":"optionA",
          "list2":"optionB",
          "list3":"optionC",
@@ -98,7 +98,7 @@ function getDataObject(data1) {
         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
         "sender": data1.sender,
         "number": data1.number,
-        "message": "other",
+        "message": "Please contact our support team.",
 
 
     }
