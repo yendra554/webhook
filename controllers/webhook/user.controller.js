@@ -56,7 +56,7 @@ function getDataObject(data1) {
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": data1.sender,
             "number": data1.number,
-            "message": "Welcome to our Web Chat CRM.\r\nPlease type 2 for the Main Menu.",
+            "message": "Welcome to our Web Chat CRM.\nPlease type 2 for the Main Menu.",
 
 
         }
