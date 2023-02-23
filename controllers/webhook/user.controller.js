@@ -48,7 +48,7 @@ function getURL(data1){
 function getDataObject(data1){
 
 
-    if(data1.message=='hi'){
+    if(data1.message=='1'){
         data1={
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": data1.sender,
