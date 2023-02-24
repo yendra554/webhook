@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
+require('dotenv').config({ path: '.env' });
+require("./connection/connection");
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const axios = require('axios');
 
 const route = require("./routes/user.routes");
 app.use(bodyParser.json());
-
+const port = process.env.PORT;
+const host = process.env.BASE_URL;
 app.post('/webhook', (req, res) => {
   const message =  "vikas";
   const sender = req.body;

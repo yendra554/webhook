@@ -1,7 +1,19 @@
 const saltRounds = 10;
 
 const axios = require('axios');
+const user = require("../../modals/user.modal");
 
+exports.getAllUsers = async (req, res, next) => {
+   
+    try {
+        
+        const Task = await user.find({});
+       
+        res.send(Task);
+    } catch (err) {
+        throw new Error(err);
+    }
+}
 
 exports.sendMessage = async (req, res, next) => {
 
