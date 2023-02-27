@@ -9,6 +9,6 @@ router.post("/sendMessage" , webhookcontroller.sendMessage);
 router.get("/getAllusers/" , userController.getAllUsers);
 router.post("/signup/", userController.signup);
 router.post("/updateUser/", userController.updateUser);
- router.get('/deleteUser/:id', userController.deleteUser);
+ router.delete('/deleteUser/:id', userController.deleteUser);
 
 module.exports = router;
