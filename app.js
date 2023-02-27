@@ -13,7 +13,7 @@ const host = process.env.BASE_URL;
 app.post('/webhook', (req, res) => {
   const message =  "vikas";
   const sender = req.body;
-//  console.log("testing testingtestingtesting",req.body)
+
 axios.post('https://wbhkapp.herokuapp.com/api/sendMessage', {
   "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
   "sender": 919354869926,
@@ -21,7 +21,7 @@ axios.post('https://wbhkapp.herokuapp.com/api/sendMessage', {
   "message": req.body.message,
 })
   .then(response => {
-    // console.log(response.data);
+
   })
   .catch(error => {
     // console.log(error);
