@@ -5,11 +5,13 @@ require("./connection/connection");
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const axios = require('axios');
-
+const mongoose = require('mongoose');
 const route = require("./routes/user.routes");
 app.use(bodyParser.json());
 const port = process.env.PORT;
 const host = process.env.BASE_URL;
+mongoose.set('strictQuery', false);
+
 app.post('/webhook', (req, res) => {
   const message =  "vikas";
   const sender = req.body;

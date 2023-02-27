@@ -1,8 +1,8 @@
 const mongoose = require("mongoose")
 
-require('dotenv').config({ path: '.env' });
+const dotenv = require('dotenv');
 
-require('dotenv').config();
+
 
 mongoose.connect(
     
@@ -13,7 +13,7 @@ mongoose.connect(
                 throw err.message;
             }
             else{
-                console.log("databse connection successfully !", process.env.DB_URL);
+                console.log("databse connection successfully !");
             }
         }
     )

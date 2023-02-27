@@ -1,14 +1,9 @@
 
-// // var bcrypt = require('bcrypt');
-// const saltRounds = 10;
-// const jwt = require('jsonwebtoken');
+
 const express = require('express');
 const axios = require('axios'); 
-// const checkAuth = require("../middileware/authentication");
 const router = express.Router();
 const user = require("../modals/user.modal");
-// const userService = require('../service/user.service');
-// router.delete('/:id', _delete);
 exports.getAllUsers = async (req, res, next) => {
    
     try {
