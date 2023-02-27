@@ -1,12 +1,14 @@
 
-// var bcrypt = require('bcrypt');
-const saltRounds = 10;
-const jwt = require('jsonwebtoken');
+// // var bcrypt = require('bcrypt');
+// const saltRounds = 10;
+// const jwt = require('jsonwebtoken');
+const express = require('express');
 const axios = require('axios'); 
-const checkAuth = require("../middileware/authentication");
-
+// const checkAuth = require("../middileware/authentication");
+const router = express.Router();
 const user = require("../modals/user.modal");
-
+// const userService = require('../service/user.service');
+// router.delete('/:id', _delete);
 exports.getAllUsers = async (req, res, next) => {
    
     try {
@@ -18,57 +20,12 @@ exports.getAllUsers = async (req, res, next) => {
     }
 }
 
-// exports.signup = async (req, res) => {
-   
-//     try {
-       
-//         const users = await new user(req.body);
-      
-//         const finduser = await user.find();
-//         console.log("finduserfinduser", finduser)
-//         const newuser = await users.save();
-//         console.log("finduserfinduserfinduser", users)
 
-//              res.status(200).json({
-//                 message: "All fields are required "
-//             });
-//         // if (finduser.length >= 1) {
-
-//         //     return res.status(500).json({
-//         //         status: false,
-//         //         message: "email already exists please use other email address !"
-//         //     })
-
-//         // }
-
-//         // const pass = "123"
-//         // users.password = pass;
-
-//         // const newuser = await users.save();
-//         // if(newuser._id){
-//         //     res.json({
-//         //         status: true,
-//         //         message: "Signup Successfully !"
-//         //     });
-//         // }else{
-//         //     res.status(400).json({
-//         //         message: "All fields are required !"
-//         //     });
-//         // }
-
-//     } catch (error) {
-//         res.status(400).json({
-//             message: "Something went wrong."
-//         });
-//     }
-
-
-// }
 exports.signup = async (req, res) => {
    
     try {
         const users = await new user(req.body);
-        
+       
 
         const finduser =await user.find({mobileNo:req.body.mobileNo});
       
@@ -105,7 +62,48 @@ exports.signup = async (req, res) => {
 
 
 }
-exports.login = (req, res) => {
+exports.updateUser = async (req, res) => {
+   
+    try {
+        const users = await new user(req.body);
+    
+        const finduser =await user.find({mobileNo:req.body.mobileNo});
+      
+    if ((finduser.length !=0)) {
+
+        return res.status(500).json({
+            status: false,
+            message: "mobileNumber exists please use other email address !"
+        })
+
+    }else{
+        const newuser = await users.save();
+        console.log("newuser",newuser)
+        if(newuser._id){
+            res.json({
+                status: true,
+                message: "Signup Successfully !"
+            });
+        }else{
+            res.status(400).json({
+                message: "All fields are required !"
+            });
+        }
+    }
+
+    
+
+   
+    } catch (error) {
+   
+        res.status(400).json({
+            message: "Something went wrong."
+        });
+    }
+
+
+}
+exports.login = async(req, res) => {
     
     user.findOne({ mobileNo: req.body.mobileNo })
         .then(users => {
@@ -159,3 +157,28 @@ exports.login = (req, res) => {
         });
 
 }
+
+exports.deleteUser = async(req, res) => {
+
+
+user.find({ mobileNo:req.params.id}, function (err, data) {
+    if (err) {
+      callback(err);
+    } else {
+        user.deleteMany({
+        mobileNo:req.params.id
+      }, function (err, r) {
+        if (err) {
+            res.status(500).json({
+                errror: err
+            });
+        } else {
+            res.status(200).json({
+                message: "scucess"
+            });
+        }
+      });
+    }
+  });
+}
+
