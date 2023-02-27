@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
-import { env } from 'process';
-require('dotenv').config({ path: '.env' });
+// import { env } from 'process';
+// require('dotenv').config({ path: '.env' });
 mongoose.connect(
     
         // process.env.DB_URL,
