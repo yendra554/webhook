@@ -48,7 +48,7 @@ obj3={ ...obj3, ...item };
         "sender": data.sender,
         "number":data.number,
         "footer": "You are in main menu",
-        "message": "Please Select the options ",
+        "message": "Please Select the options /n/r Type 2 to get the list of Options",
         "name": "Menu",
          "title":"Account creation",
                                              
