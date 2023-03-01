@@ -7,7 +7,7 @@ const userservices = new mongoose.Schema({
         require:true,
     },
     servics:{
-        type: {},
+        type: [],
         require:true,
     },
    

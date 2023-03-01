@@ -2,6 +2,7 @@ const saltRounds = 10;
 
 const axios = require('axios');
 const user = require("../../modals/user.modal");
+const userMenu = require("../../modals/userMenu.modal");
 
 exports.getAllUsers = async (req, res, next) => {
    
@@ -16,7 +17,7 @@ exports.getAllUsers = async (req, res, next) => {
 }
 
 exports.sendMessage = async (req, res, next) => {
-
+    var menuData=[];
     var data = {
 
         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
@@ -26,7 +27,36 @@ exports.sendMessage = async (req, res, next) => {
         //  "message": 2,
 
     }
-    const obj = getDataObject(data)
+    var obj2;
+    var obj3;
+    const Task = await userMenu.find();
+    Task.forEach((item, index) =>{
+        let d=index+1;
+    const dynamicKey = "list" + d
+    const myObj = {};
+ 
+    myObj[dynamicKey] = item.menuTitle;
+    menuData.push(myObj);
+     obj2=menuData;
+       });
+    obj2.forEach((item, index) =>{
+
+obj3={ ...obj3, ...item };
+    })
+    obj1={
+        "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+        "sender": data.sender,
+        "number":data.number,
+        "footer": "You are in main menu",
+        "message": "Please Select the options ",
+        "name": "Menu",
+         "title":"Account creation",
+                                             
+    }
+   
+    obj={ ...obj3, ...obj1 };
+   console.log("obj", obj)
+
     const url = getURL(data)
 
     axios.post(url, obj)
