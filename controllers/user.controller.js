@@ -4,11 +4,12 @@ const express = require('express');
 const axios = require('axios'); 
 const router = express.Router();
 const user = require("../modals/user.modal");
+
 exports.getAllUsers = async (req, res, next) => {
    
     try {
        const Task = await user.find();
-     
+  
         res.send(Task);
     } catch (err) {
         throw new Error(err);

@@ -3,13 +3,13 @@ const saltRounds = 10;
 const axios = require('axios');
 const user = require("../../modals/user.modal");
 const userMenu = require("../../modals/userMenu.modal");
-
+const userServices = require("../../modals/userServices.modal");
 exports.getAllUsers = async (req, res, next) => {
-   
+
     try {
-        
+
         const Task = await user.find({});
-       
+
         res.send(Task);
     } catch (err) {
         throw new Error(err);
@@ -17,48 +17,70 @@ exports.getAllUsers = async (req, res, next) => {
 }
 
 exports.sendMessage = async (req, res, next) => {
-    var menuData=[];
+    var menuData = [];
     var data = {
 
         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
         "sender": 919354869926,
         "number": req.body.number,
         "message": req.body.message,
-        //  "message": 2,
 
-    }
-    var obj2;
-    var obj3;
-    const Task = await userMenu.find();
-    Task.forEach((item, index) =>{
-        let d=index+1;
-    const dynamicKey = "list" + d
-    const myObj = {};
- 
-    myObj[dynamicKey] = item.menuTitle;
-    menuData.push(myObj);
-     obj2=menuData;
-       });
-    obj2.forEach((item, index) =>{
 
-obj3={ ...obj3, ...item };
-    })
-    obj1={
-        "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-        "sender": data.sender,
-        "number":data.number,
-        "footer": "You are in main menu",
-        "message": "Please Select the options /n/r Type 2 to get the list of Options",
-        "name": "Menu",
-         "title":"Account creation",
-                                             
     }
    
-    obj={ ...obj3, ...obj1 };
-   console.log("obj", obj)
+   var url;
+   var obj;
+    const Task1 = await userServices.find({ servicesName: data.message })
 
-    const url = getURL(data)
 
+    if(Task1.length===0){
+        console.log("Task1.length if", Task1.length)
+        obj = {
+            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+            "sender": data.sender,
+            "number": data.number,
+            "message": data.message,
+            // "message": "testing Welcome to our Web Chat CRM.\nPlease type 2 for the Main Menu.",
+
+
+        }
+        url = "https://watzapi.in/send-message";
+    }else{
+        console.log("Task1.length else", Task1.length)
+        var obj2;
+        var obj3;
+        const Task = await userMenu.find();
+       
+        Task.forEach((item, index) => {
+            let d = index + 1;
+            const dynamicKey = "list" + d
+            const myObj = {};
+    
+            myObj[dynamicKey] = item.menuTitle;
+            menuData.push(myObj);
+            obj2 = menuData;
+        });
+        obj2.forEach((item, index) => {
+    
+            obj3 = { ...obj3, ...item };
+        })
+        obj1 = {
+            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+            "sender": data.sender,
+            "number": data.number,
+            "footer": "You are in main menu",
+            "message": "Please Select the options ",
+            "name": "Menu",
+            "title": "Account creation",
+    
+        }
+    
+        obj = { ...obj3, ...obj1 };
+    
+        url = "https://watzapi.in/send-list"
+    }
+
+ 
     axios.post(url, obj)
         .then(response => {
             res.json({
@@ -79,7 +101,7 @@ function getURL(data1) {
     } else if (data1.message == '2') {
         url = " https://watzapi.in/send-list"
 
-    }else if (data1.message == 'option1') {
+    } else if (data1.message == 'option1') {
         url = " https://watzapi.in/send-list"
 
     }
@@ -98,53 +120,53 @@ function getDataObject(data1) {
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": data1.sender,
             "number": data1.number,
-            "message": "Welcome to our Web Chat CRM.\nPlease type 2 for the Main Menu.",
+            "message": "Welcome to our Web Chat CRM.\n\rPlease type 2 for the Main Menu.",
 
 
         }
     } else if (data1.message == '2') {
-        data1={
+        data1 = {
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": data1.sender,
-            "number":data1.number,
+            "number": data1.number,
             "footer": "You are in main menu",
             "message": "Please Select the options ",
             "name": "Menu",
-             "title":"Account creation",
-             "list1":"option1",
-             "list2":"option2",
-             "list3":"option3",
-             "list4":"option4"
-                                                    
+            "title": "Account creation",
+            "list1": "option1",
+            "list2": "option2",
+            "list3": "option3",
+            "list4": "option4"
+
         }
 
     }
     else if (data1.message == 'option1') {
-    data1={
-        "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-        "sender": data1.sender,
-        "number":data1.number,
-        "footer": "You are in sub menu",
-        "message": "Please Select the options ",
-        "name": " Sub Menu",
-         "title":"Sub Menu",
-         "list1":"optionA",
-         "list2":"optionB",
-         "list3":"optionC",
-         "list4":"optionD"
-                                                
+        data1 = {
+            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+            "sender": data1.sender,
+            "number": data1.number,
+            "footer": "You are in sub menu",
+            "message": "Please Select the options ",
+            "name": " Sub Menu",
+            "title": "Sub Menu",
+            "list1": "optionA",
+            "list2": "optionB",
+            "list3": "optionC",
+            "list4": "optionD"
+
+        }
     }
-  }
-  else{
-    data1 = {
-        "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-        "sender": data1.sender,
-        "number": data1.number,
-        "message": "Please contact our support team.",
+    else {
+        data1 = {
+            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+            "sender": data1.sender,
+            "number": data1.number,
+            "message": "Please contact our support team.",
 
 
+        }
     }
-  }
     return data1
 
 

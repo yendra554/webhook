@@ -106,9 +106,11 @@ exports.addService = async (req, res) => {
 exports.deleteMenu = async(req, res) => {
 
 
-    userMenu.find({ _id:req.params.id}, function (err, data) {
+    userMenu.find({ menuTitle:req.params.id}, function (err, data) {
         if (err) {
-          callback(err);
+            res.status(400).json({
+                errror: err
+            });
         } else {
             userMenu.deleteMany({
                 menuTitle:req.params.id
