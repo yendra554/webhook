@@ -32,60 +32,61 @@ exports.sendMessage = async (req, res, next) => {
    var obj;
     const Task1 = await userMenu.find({ perentMenu: data.message })
 
-
-    if((Task1.length===0)&&(data.message.toLowerCase()!="hi")){
-        console.log("Task1Task1Task1 not Hi",Task1.length, Task1)
-        obj = {
-            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-            "sender": data.sender,
-            "number": data.number,
-            // "message": data.message,
-            "message": "testing Welcome to our Web Chat CRM.\nPlease type 2 for the Main Menu.",
-
-
+    if(Task1.length===0){
+        if(data.message.toLowerCase()!="hi"){
+            console.log("Task1Task1Task1 not Hi",Task1.length, Task1)
+            obj = {
+                "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+                "sender": data.sender,
+                "number": data.number,
+                // "message": data.message,
+                "message": "testing Welcome to our Web Chat CRM.\nPlease type 2 for the Main Menu.",
+    
+    
+            }
+            url = "https://watzapi.in/send-message";
         }
-        url = "https://watzapi.in/send-message";
-    }
-    
-    else if((Task1.length===0)&&(data.message.toLowerCase()=="hi"))
-       {
-        console.log("Task1Task1Task1 HI",Task1.length, Task1)
-        var obj2;
-        var obj3;
-        const Task = await userMenu.find({ perentMenu:"Menu"});
-       
-        Task.forEach((item, index) => {
-            let d = index + 1;
-            const dynamicKey = "list" + d
-            const myObj = {};
-    
-            myObj[dynamicKey] = item.menuTitle;
-            menuData.push(myObj);
-            obj2 = menuData;
-        });
-        obj2.forEach((item, index) => {
-    
-            obj3 = { ...obj3, ...item };
-        })
-        obj1 = {
-            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-            "sender": data.sender,
-            "number": data.number,
-            "footer": "You are in main menu",
-            "message": "Please Select the options ",
-            "name": "Menu",
-            "title": "Account creation",
-    
+        
+        else(data.message.toLowerCase()=="hi")
+           {
+            console.log("Task1Task1Task1 HI",Task1.length, Task1)
+            var obj2;
+            var obj3;
+            const Task = await userMenu.find({ perentMenu:"Menu"});
+           
+            Task.forEach((item, index) => {
+                let d = index + 1;
+                const dynamicKey = "list" + d
+                const myObj = {};
+        
+                myObj[dynamicKey] = item.menuTitle;
+                menuData.push(myObj);
+                obj2 = menuData;
+            });
+            obj2.forEach((item, index) => {
+        
+                obj3 = { ...obj3, ...item };
+            })
+            obj1 = {
+                "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+                "sender": data.sender,
+                "number": data.number,
+                "footer": "You are in main menu",
+                "message": "Please Select the options ",
+                "name": "Menu",
+                "title": "Account creation",
+        
+            }
+        
+            obj = { ...obj3, ...obj1 };
+        
+            url = "https://watzapi.in/send-list"
         }
-    
-        obj = { ...obj3, ...obj1 };
-    
-        url = "https://watzapi.in/send-list"
-    }
 
-    
-    else if((Task1.length != 0))
-    {
+    }
+    else{
+
+   
         console.log("Task1Task1Task1 Task1.length != 0",Task1.length, Task1)
         var obj2;
         var obj3;
@@ -119,6 +120,10 @@ exports.sendMessage = async (req, res, next) => {
     
         url = "https://watzapi.in/send-list"
     }
+  
+
+    
+   
 // else{
 //     obj = {
 //         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
