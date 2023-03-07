@@ -30,7 +30,8 @@ exports.sendMessage = async (req, res, next) => {
    
    var url;
    var obj;
-    const Task1 = await userMenu.find({ perentMenu:  req.body.message })
+   console.log("for support",Task1, req.body.message)
+    const Task1 = await userMenu.aggregate({ perentMenu:req.body.message })
 console.log("for support",Task1, data.message)
     if(Task1.length===0){
         if(data.message.toLowerCase()!="hi"){
@@ -52,7 +53,7 @@ console.log("for support",Task1, data.message)
             console.log("Task1Task1Task1 HI",Task1.length, Task1)
             var obj2;
             var obj3;
-            const Task = await userMenu.find({ perentMenu:"Menu"});
+            const Task = await userMenu.aggregate({ perentMenu:"Menu"});
            
             Task.forEach((item, index) => {
                 let d = index + 1;
@@ -90,7 +91,7 @@ console.log("for support",Task1, data.message)
         console.log("Task1Task1Task1 Task1.length != 0",Task1.length, Task1)
         var obj2;
         var obj3;
-        const Task = await userMenu.find({ perentMenu:data.message});
+        const Task = await userMenu.aggregate({ perentMenu:data.message});
        
         Task.forEach((item, index) => {
             let d = index + 1;
@@ -141,80 +142,80 @@ console.log("for support",Task1, data.message)
 }
 
 
-function getURL(data1) {
+// function getURL(data1) {
 
-    if (data1.message == 'hi') {
-        url = "https://watzapi.in/send-message"
-    } else if (data1.message == '2') {
-        url = " https://watzapi.in/send-list"
+//     if (data1.message == 'hi') {
+//         url = "https://watzapi.in/send-message"
+//     } else if (data1.message == '2') {
+//         url = " https://watzapi.in/send-list"
 
-    } else if (data1.message == 'option1') {
-        url = " https://watzapi.in/send-list"
+//     } else if (data1.message == 'option1') {
+//         url = " https://watzapi.in/send-list"
 
-    }
-    else {
-        url = "https://watzapi.in/send-message"
-    }
-    return url
+//     }
+//     else {
+//         url = "https://watzapi.in/send-message"
+//     }
+//     return url
 
-}
+// }
 
-function getDataObject(data1) {
-
-
-    if (data1.message == 'hi') {
-        data1 = {
-            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-            "sender": data1.sender,
-            "number": data1.number,
-            "message": "Welcome to our Web Chat CRM.\nPlease type 2 for the Main Menu.",
+// function getDataObject(data1) {
 
 
-        }
-    } else if (data1.message == '2') {
-        data1 = {
-            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-            "sender": data1.sender,
-            "number": data1.number,
-            "footer": "You are in main menu",
-            "message": "Please Select the options ",
-            "name": "Menu",
-            "title": "Account creation",
-            "list1": "option1",
-            "list2": "option2",
-            "list3": "option3",
-            "list4": "option4"
-
-        }
-
-    }
-    else if (data1.message == 'option1') {
-        data1 = {
-            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-            "sender": data1.sender,
-            "number": data1.number,
-            "footer": "You are in sub menu",
-            "message": "Please Select the options ",
-            "name": " Sub Menu",
-            "title": "Sub Menu",
-            "list1": "optionA",
-            "list2": "optionB",
-            "list3": "optionC",
-            "list4": "optionD"
-
-        }
-    }
-    else {
-        data1 = {
-            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-            "sender": data1.sender,
-            "number": data1.number,
-            "message": "Please contact our support team.",
+//     if (data1.message == 'hi') {
+//         data1 = {
+//             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+//             "sender": data1.sender,
+//             "number": data1.number,
+//             "message": "Welcome to our Web Chat CRM.\nPlease type 2 for the Main Menu.",
 
 
-        }
-    }
-    return data1
+//         }
+//     } else if (data1.message == '2') {
+//         data1 = {
+//             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+//             "sender": data1.sender,
+//             "number": data1.number,
+//             "footer": "You are in main menu",
+//             "message": "Please Select the options ",
+//             "name": "Menu",
+//             "title": "Account creation",
+//             "list1": "option1",
+//             "list2": "option2",
+//             "list3": "option3",
+//             "list4": "option4"
+
+//         }
+
+//     }
+//     else if (data1.message == 'option1') {
+//         data1 = {
+//             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+//             "sender": data1.sender,
+//             "number": data1.number,
+//             "footer": "You are in sub menu",
+//             "message": "Please Select the options ",
+//             "name": " Sub Menu",
+//             "title": "Sub Menu",
+//             "list1": "optionA",
+//             "list2": "optionB",
+//             "list3": "optionC",
+//             "list4": "optionD"
+
+//         }
+//     }
+//     else {
+//         data1 = {
+//             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+//             "sender": data1.sender,
+//             "number": data1.number,
+//             "message": "Please contact our support team.",
 
 
-}
+//         }
+//     }
+//     return data1
+
+
+// }
