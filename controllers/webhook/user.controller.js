@@ -83,7 +83,7 @@ console.log("Task1Task1Task1",Task1.length)
     }
 
     
-    else if((Task1.length > 0))
+    else if((Task1.length != 0))
     {
        
         var obj2;
@@ -118,18 +118,18 @@ console.log("Task1Task1Task1",Task1.length)
     
         url = "https://watzapi.in/send-list"
     }
-else{
-    obj = {
-        "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-        "sender": data.sender,
-        "number": data.number,
-        // "message": data.message,
-        "message": "testing Welcome to our Web Chat and contact to our  support team .",
+// else{
+//     obj = {
+//         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+//         "sender": data.sender,
+//         "number": data.number,
+//         // "message": data.message,
+//         "message": "testing Welcome to our Web Chat and contact to our  support team .",
 
 
-    }
-    url = "https://watzapi.in/send-message";
-}
+//     }
+//     url = "https://watzapi.in/send-message";
+// }
    
 
  
