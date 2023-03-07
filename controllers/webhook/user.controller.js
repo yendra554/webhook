@@ -31,10 +31,10 @@ exports.sendMessage = async (req, res, next) => {
    var url;
    var obj;
     const Task1 = await userMenu.find({ perentMenu: data.message })
-console.log("Task1Task1Task1",Task1.length)
+
 
     if((Task1.length===0)&&(data.message.toLowerCase()!="hi")){
-       
+        console.log("Task1Task1Task1 not Hi",Task1.length, Task1)
         obj = {
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": data.sender,
@@ -49,6 +49,7 @@ console.log("Task1Task1Task1",Task1.length)
     
     else if((Task1.length===0)&&(data.message.toLowerCase()=="hi"))
        {
+        console.log("Task1Task1Task1 HI",Task1.length, Task1)
         var obj2;
         var obj3;
         const Task = await userMenu.find({ perentMenu:"Menu"});
@@ -85,7 +86,7 @@ console.log("Task1Task1Task1",Task1.length)
     
     else if((Task1.length != 0))
     {
-       
+        console.log("Task1Task1Task1 Task1.length != 0",Task1.length, Task1)
         var obj2;
         var obj3;
         const Task = await userMenu.find({ perentMenu:data.message});
