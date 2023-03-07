@@ -31,10 +31,10 @@ exports.sendMessage = async (req, res, next) => {
    var url;
    var obj;
  
-    const Task1 = await userMenu.aggregate([{ "$match": { "perentMenu":req.body.message} }])
+    const Task = await userMenu.aggregate([{ "$match": { "perentMenu":req.body.message} }])
     // .find({ perentMenu:req.body.message })
-console.log("for support",Task1, data.message)
-    if(Task1.length===0){
+console.log("for support",Task, data.message)
+    if(Task.length===0){
         if(data.message!="hi"){
           
             obj = {
