@@ -31,7 +31,7 @@ exports.sendMessage = async (req, res, next) => {
    var url;
    var obj;
  
-    const Task1 = await userMenu.aggregate([{ "$match": { "perentMenu":  data.message} }])
+    const Task1 = await userMenu.aggregate([{ "$match": { "perentMenu":req.body.message} }])
     // .find({ perentMenu:req.body.message })
 console.log("for support",Task1, data.message)
     if(Task1.length===0){
@@ -54,7 +54,7 @@ console.log("for support",Task1, data.message)
           
             var obj2;
             var obj3;
-            const Task = await userMenu.aggregate([{ "$match": { "perentMenu":  "Menu"} }])
+            // const Task = await userMenu.aggregate([{ "$match": { "perentMenu":  "Menu"} }])
            
             Task.forEach((item, index) => {
                 let d = index + 1;
@@ -92,7 +92,7 @@ console.log("for support",Task1, data.message)
       
         var obj2;
         var obj3;
-        const Task =await userMenu.aggregate([{ "$match": { "perentMenu":  data.message} }])
+        // const Task =await userMenu.aggregate([{ "$match": { "perentMenu": req.body.message} }])
        
         Task.forEach((item, index) => {
             let d = index + 1;
