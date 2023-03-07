@@ -31,7 +31,7 @@ exports.sendMessage = async (req, res, next) => {
    var url;
    var obj;
     const Task1 = await userMenu.find({ perentMenu: data.message })
-
+console.log("for support",Task1)
     if(Task1.length===0){
         if(data.message.toLowerCase()!="hi"){
             console.log("Task1Task1Task1 not Hi",Task1.length, Task1)
@@ -109,7 +109,7 @@ exports.sendMessage = async (req, res, next) => {
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": data.sender,
             "number": data.number,
-            "footer": "You are in main menu",
+            "footer": "You are in Support",
             "message": "Please Select the options ",
             "name": "Support Menu",
             "title": "Support",
@@ -124,18 +124,7 @@ exports.sendMessage = async (req, res, next) => {
 
     
    
-// else{
-//     obj = {
-//         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
-//         "sender": data.sender,
-//         "number": data.number,
-//         // "message": data.message,
-//         "message": "testing Welcome to our Web Chat and contact to our  support team .",
 
-
-//     }
-//     url = "https://watzapi.in/send-message";
-// }
    
 
  
