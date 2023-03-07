@@ -3,12 +3,12 @@ const saltRounds = 10;
 const axios = require('axios');
 const user = require("../../modals/user.modal");
 const userMenu = require("../../modals/userMenu.modal");
-const userServices = require("../../modals/userServices.modal");
+// const userServices = require("../../modals/userServices.modal");
 exports.getAllUsers = async (req, res, next) => {
 
     try {
 
-        const Task = await user.find({perentMenu:req.params.id});
+        const Task = await userMenu.find({perentMenu:req.params.id});
 
         res.send(Task);
     } catch (err) {
@@ -88,7 +88,7 @@ console.log("Task1Task1Task1",Task1.length)
        
         var obj2;
         var obj3;
-        const Task = await userMenu.find({ perentMenu:"Menu"});
+        const Task = await userMenu.find({ perentMenu:data.message});
        
         Task.forEach((item, index) => {
             let d = index + 1;
@@ -109,8 +109,8 @@ console.log("Task1Task1Task1",Task1.length)
             "number": data.number,
             "footer": "You are in main menu",
             "message": "Please Select the options ",
-            "name": "Menu",
-            "title": "Account creation",
+            "name": "Support Menu",
+            "title": "Support",
     
         }
     
