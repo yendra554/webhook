@@ -6,6 +6,10 @@ const userMenu = new mongoose.Schema({
         type: String,
         require:true,
     },
+    perentMenu:{
+        type: String,
+        require:true,
+    },
     status:{
         type: String,
         require:true,

@@ -8,7 +8,7 @@ exports.getAllUsers = async (req, res, next) => {
 
     try {
 
-        const Task = await user.find({});
+        const Task = await user.find({perentMenu:req.params.id});
 
         res.send(Task);
     } catch (err) {
@@ -30,26 +30,28 @@ exports.sendMessage = async (req, res, next) => {
    
    var url;
    var obj;
-    const Task1 = await userServices.find({ servicesName: data.message })
+    const Task1 = await userMenu.find({ perentMenu: data.message })
+console.log("Task1Task1Task1",Task1.length)
 
-
-    if(Task1.length===0){
-        console.log("Task1.length if", Task1.length)
+    if((Task1.length===0)&&(data.message.toLowerCase()!="hi")){
+       
         obj = {
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": data.sender,
             "number": data.number,
-            "message": data.message,
-            // "message": "testing Welcome to our Web Chat CRM.\nPlease type 2 for the Main Menu.",
+            // "message": data.message,
+            "message": "testing Welcome to our Web Chat CRM.\nPlease type 2 for the Main Menu.",
 
 
         }
         url = "https://watzapi.in/send-message";
-    }else{
-        console.log("Task1.length else", Task1.length)
+    }
+    
+    else if((Task1.length===0)&&(data.message.toLowerCase()=="hi"))
+       {
         var obj2;
         var obj3;
-        const Task = await userMenu.find();
+        const Task = await userMenu.find({ perentMenu:"Menu"});
        
         Task.forEach((item, index) => {
             let d = index + 1;
@@ -79,6 +81,56 @@ exports.sendMessage = async (req, res, next) => {
     
         url = "https://watzapi.in/send-list"
     }
+
+    
+    else if((Task1.length > 0))
+    {
+       
+        var obj2;
+        var obj3;
+        const Task = await userMenu.find({ perentMenu:"Menu"});
+       
+        Task.forEach((item, index) => {
+            let d = index + 1;
+            const dynamicKey = "list" + d
+            const myObj = {};
+    
+            myObj[dynamicKey] = item.menuTitle;
+            menuData.push(myObj);
+            obj2 = menuData;
+        });
+        obj2.forEach((item, index) => {
+    
+            obj3 = { ...obj3, ...item };
+        })
+        obj1 = {
+            "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+            "sender": data.sender,
+            "number": data.number,
+            "footer": "You are in main menu",
+            "message": "Please Select the options ",
+            "name": "Menu",
+            "title": "Account creation",
+    
+        }
+    
+        obj = { ...obj3, ...obj1 };
+    
+        url = "https://watzapi.in/send-list"
+    }
+else{
+    obj = {
+        "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
+        "sender": data.sender,
+        "number": data.number,
+        // "message": data.message,
+        "message": "testing Welcome to our Web Chat and contact to our  support team .",
+
+
+    }
+    url = "https://watzapi.in/send-message";
+}
+   
 
  
     axios.post(url, obj)
@@ -120,7 +172,7 @@ function getDataObject(data1) {
             "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
             "sender": data1.sender,
             "number": data1.number,
-            "message": "Welcome to our Web Chat CRM.\n\rPlease type 2 for the Main Menu.",
+            "message": "Welcome to our Web Chat CRM.\nPlease type 2 for the Main Menu.",
 
 
         }

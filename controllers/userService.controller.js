@@ -10,7 +10,7 @@ exports.getMenu = async (req, res, next) => {
    
 
     try {
-    
+        // {menuTitle:"Deposit"
        const Task = await userMenu.find();
      
         res.send(Task);
@@ -108,10 +108,12 @@ exports.deleteMenu = async(req, res) => {
 
     userMenu.find({ menuTitle:req.params.id}, function (err, data) {
         if (err) {
+            console.log("error")
             res.status(400).json({
                 errror: err
             });
         } else {
+            console.log("noerror")
             userMenu.deleteMany({
                 menuTitle:req.params.id
           }, function (err, r) {
@@ -121,7 +123,7 @@ exports.deleteMenu = async(req, res) => {
                 });
             } else {
                 res.status(200).json({
-                    message: "scucess"
+                    message: "scucess12333"
                 });
             }
           });

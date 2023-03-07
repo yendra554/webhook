@@ -13,7 +13,7 @@ router.post("/signup/", userController.signup);
 router.post("/updateUser/", userController.updateUser);
  router.delete('/deleteUser/:id', userController.deleteUser);
  router.post("/createMenu" , userService.createMenu);
- router.get("/getMenu/" , userService.getMenu);
+ router.get("/getMenu/:id" , userService.getMenu);
  router.post("/addService" , userService.addService);
  router.get("/getServices/" , userService.getServices);
  router.delete("/deleteMenu/:id" , userService.deleteMenu);
