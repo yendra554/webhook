@@ -31,9 +31,9 @@ exports.sendMessage = async (req, res, next) => {
    var url;
    var obj;
  
-    const Task1 = await userMenu.find({ perentMenu:"Support" })
-console.log("for support",Task1, data.message)
-    if(Task1.length===0){
+    const Task = await userMenu.find({ perentMenu:req.body.message })
+console.log("for support",Task, data.message)
+    if(Task.length===0){
         if(data.message.toLowerCase()!="hi"){
           
             obj = {
@@ -53,7 +53,7 @@ console.log("for support",Task1, data.message)
           
             var obj2;
             var obj3;
-            const Task = await userMenu.find({ perentMenu:"Menu"});
+           
            
             Task.forEach((item, index) => {
                 let d = index + 1;
@@ -91,7 +91,7 @@ console.log("for support",Task1, data.message)
       
         var obj2;
         var obj3;
-        const Task = await userMenu.find({ perentMenu:data.message});
+      
        
         Task.forEach((item, index) => {
             let d = index + 1;
@@ -204,7 +204,6 @@ function getDataObject(data1) {
             "list4": "optionD"
 
         }
-        
     }
     else {
         data1 = {
