@@ -23,11 +23,11 @@ exports.sendMessage = async (req, res, next) => {
         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
         "sender": 919354869926,
         "number": req.body.number,
-        "message": req.body.messgae,
+        "message": "Support",
 
 
     }
-   
+   console.log("req.body.messgaereq.body.messgae", req.body)
    var url;
    var obj;
   
