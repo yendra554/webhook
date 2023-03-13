@@ -50,7 +50,7 @@ if((Task1.length === 0)){
             "sender": data.sender,
             "number": data.number,
 
-            "message": Task1.message
+            "message": "Wellcome to " + data.message
         }
         url = "https://watzapi.in/send-message"; 
         
@@ -111,9 +111,9 @@ else{
         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
         "sender": data.sender,
         "number": data.number,
-        "footer": "You are in Support",
+        "footer": "You are in "+ data.message,
         "message": "Please Select the options ",
-        "name": "Support Menu",
+        "name": data.message + " Menu",
         "title": "Support",
 
     }
