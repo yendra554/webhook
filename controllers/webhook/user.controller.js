@@ -23,7 +23,7 @@ exports.sendMessage = async (req, res, next) => {
     // for (let i = 0; i < newMsg.length; i++) {
     //     newMsg[i] = newMsg[i][0].toUpperCase() + newMsg[i].substr(1);
     // }
-    newMsg[0].toUpperCase();
+    newMsg1[0].toUpperCase();
     // newMsg.join(" ");
     newMsg=newMsg1;
     var data = {
