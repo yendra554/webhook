@@ -10,8 +10,8 @@ exports.getMenu = async (req, res, next) => {
    
 
     try {
-        // {menuTitle:"Deposit"
-       const Task = await userMenu.find();
+       
+       const Task = await userMenu.find({perentMenu:req.params.id});
      
         res.send(Task);
     } catch (err) {
@@ -142,29 +142,29 @@ exports.getServices = async (req, res, next) => {
         throw new Error(err);
     }
 }
-exports.deleteServices = async(req, res) => {
+// exports.deleteServices = async(req, res) => {
 
 
-userServices.find({ servicesName:req.params.id}, function (err, data) {
-        if (err) {
-          callback(err);
-        } else {
-            userServices.deleteMany({
-                servicesName:req.params.id
-          }, function (err, r) {
-            if (err) {
-                res.status(500).json({
-                    errror: err
-                });
-            } else {
-                res.status(200).json({
-                    message: "scucess"
-                });
-            }
-          });
-        }
-      });
-    }
+// userServices.find({ servicesName:req.params.id}, function (err, data) {
+//         if (err) {
+//           callback(err);
+//         } else {
+//             userServices.deleteMany({
+//                 servicesName:req.params.id
+//           }, function (err, r) {
+//             if (err) {
+//                 res.status(500).json({
+//                     errror: err
+//                 });
+//             } else {
+//                 res.status(200).json({
+//                     message: "scucess"
+//                 });
+//             }
+//           });
+//         }
+//       });
+//     }
 
 exports.getServicesByMenu = async(req, res) => {
 

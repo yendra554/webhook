@@ -154,27 +154,29 @@ exports.login = async(req, res) => {
 
 }
 
-exports.deleteUser = async(req, res) => {
+// exports.deleteUser = async(req, res) => {
 
 
-user.find({ mobileNo:req.params.id}, function (err, data) {
-    if (err) {
-      callback(err);
-    } else {
-        user.deleteMany({
-        mobileNo:req.params.id
-      }, function (err, r) {
-        if (err) {
-            res.status(500).json({
-                errror: err
-            });
-        } else {
-            res.status(200).json({
-                message: "scucess"
-            });
-        }
-      });
-    }
-  });
-}
+// user.find({ mobileNo:req.params.id}, function (err, data) {
+//     if (err) {
+//     //   callback(err);
+    
+//     console.log("err");
+//     } else {
+//         user.deleteMany({
+//         mobileNo:req.params.id
+//       }, function (err, r) {
+//         if (err) {
+//             res.status(500).json({
+//                 errror: err
+//             });
+//         } else {
+//             res.status(200).json({
+//                 message: "scucess"
+//             });
+//         }
+//       });
+//     }
+//   });
+// }
 
