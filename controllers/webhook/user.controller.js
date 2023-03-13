@@ -32,8 +32,14 @@ exports.sendMessage = async (req, res, next) => {
    var obj;
  
     const Task = await userMenu.find({ perentMenu:req.body.message })
-console.log("for support",Task, data.message)
-    if(Task.length===0){
+    var bigCities = Task.filter(function (e) {
+        return e.perentMenu == "Support";
+    });
+    console.log("bigCities", bigCities);
+
+
+
+    if(bigCities.length===0){
         if(data.message.toLowerCase()!="hi"){
           
             obj = {
@@ -55,7 +61,7 @@ console.log("for support",Task, data.message)
             var obj3;
            
            
-            Task.map((item, index) => {
+            bigCities.forEach((item, index) => {
                 let d = index + 1;
                 const dynamicKey = "list" + d
                 const myObj = {};
@@ -64,7 +70,7 @@ console.log("for support",Task, data.message)
                 menuData.push(myObj);
                 obj2 = menuData;
             });
-            obj2.map((item, index) => {
+            obj2.forEach((item, index) => {
         
                 obj3 = { ...obj3, ...item };
             })
@@ -93,7 +99,7 @@ console.log("for support",Task, data.message)
         var obj3;
       
        
-        Task.map((item, index) => {
+        bigCities.forEach((item, index) => {
             let d = index + 1;
             const dynamicKey = "list" + d
             const myObj = {};
@@ -102,7 +108,7 @@ console.log("for support",Task, data.message)
             menuData.push(myObj);
             obj2 = menuData;
         });
-        obj2.map((item, index) => {
+        obj2.forEach((item, index) => {
     
             obj3 = { ...obj3, ...item };
         })
