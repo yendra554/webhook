@@ -55,7 +55,7 @@ console.log("for support",Task, data.message)
             var obj3;
            
            
-            Task.forEach((item, index) => {
+            Task.map((item, index) => {
                 let d = index + 1;
                 const dynamicKey = "list" + d
                 const myObj = {};
@@ -64,7 +64,7 @@ console.log("for support",Task, data.message)
                 menuData.push(myObj);
                 obj2 = menuData;
             });
-            obj2.forEach((item, index) => {
+            obj2.map((item, index) => {
         
                 obj3 = { ...obj3, ...item };
             })
@@ -93,7 +93,7 @@ console.log("for support",Task, data.message)
         var obj3;
       
        
-        Task.forEach((item, index) => {
+        Task.map((item, index) => {
             let d = index + 1;
             const dynamicKey = "list" + d
             const myObj = {};
@@ -102,7 +102,7 @@ console.log("for support",Task, data.message)
             menuData.push(myObj);
             obj2 = menuData;
         });
-        obj2.forEach((item, index) => {
+        obj2.map((item, index) => {
     
             obj3 = { ...obj3, ...item };
         })
