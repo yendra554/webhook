@@ -39,7 +39,7 @@ exports.sendMessage = async (req, res, next) => {
 
 
 
-    if(bigCities.length===0){
+    if(Task.length===0){
         if(data.message.toLowerCase()!="hi"){
           
             obj = {
@@ -61,7 +61,7 @@ exports.sendMessage = async (req, res, next) => {
             var obj3;
            
            
-            bigCities.forEach((item, index) => {
+            Task.forEach((item, index) => {
                 let d = index + 1;
                 const dynamicKey = "list" + d
                 const myObj = {};
@@ -99,7 +99,7 @@ exports.sendMessage = async (req, res, next) => {
         var obj3;
       
        
-        bigCities.forEach((item, index) => {
+        Task.forEach((item, index) => {
             let d = index + 1;
             const dynamicKey = "list" + d
             const myObj = {};
