@@ -204,6 +204,7 @@ function getDataObject(data1) {
             "list4": "optionD"
 
         }
+        
     }
     else {
         data1 = {
