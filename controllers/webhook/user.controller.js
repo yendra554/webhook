@@ -18,15 +18,17 @@ exports.getAllUsers = async (req, res, next) => {
 
 exports.sendMessage = async (req, res, next) => {
     var menuData = [];
-    var newMsg1 = req.body.message.split(" ");
+    var newMsg1 = req.body.message;
     var newMsg;
     // for (let i = 0; i < newMsg.length; i++) {
     //     newMsg[i] = newMsg[i][0].toUpperCase() + newMsg[i].substr(1);
     // }
-    newMsg1[0].toUpperCase();
+    // newMsg=newMsg1[0].toUpperCase();
    
-    // newMsg.join(" ");
-    newMsg=newMsg1.toString();;
+    const str2 = newMsg1.charAt(0).toUpperCase() + newMsg1.slice(1);
+console.log(str2);
+newMsg=str2;
+    
     console.log("newMsg1newMsg1newMsg1", newMsg)
     var data = {
 
