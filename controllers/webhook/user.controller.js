@@ -20,9 +20,10 @@ exports.sendMessage = async (req, res, next) => {
     var menuData = [];
     var newMsg = req.body.message.split(" ");
    
-    for (let i = 0; i < newMsg.length; i++) {
-        newMsg[i] = newMsg[i][0].toUpperCase() + newMsg[i].substr(1);
-    }
+    // for (let i = 0; i < newMsg.length; i++) {
+    //     newMsg[i] = newMsg[i][0].toUpperCase() + newMsg[i].substr(1);
+    // }
+    newMsg[0].toUpperCase();
     newMsg.join(" ");
     var data = {
 
