@@ -114,7 +114,8 @@ else{
         "footer": "You are in "+ data.message,
         "message": "Please Select the options ",
         "name": data.message + " Menu",
-        "title": "Support",
+        //"title": "Support",
+        "title": data.message,
 
     }
 
