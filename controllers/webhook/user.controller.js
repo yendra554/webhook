@@ -19,7 +19,7 @@ exports.getAllUsers = async (req, res, next) => {
 exports.sendMessage = async (req, res, next) => {
     var menuData = [];
     var newMsg1 = req.body.message.split(" ");
-   
+    var newMsg;
     // for (let i = 0; i < newMsg.length; i++) {
     //     newMsg[i] = newMsg[i][0].toUpperCase() + newMsg[i].substr(1);
     // }
