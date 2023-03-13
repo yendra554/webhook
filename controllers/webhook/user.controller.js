@@ -30,18 +30,12 @@ exports.sendMessage = async (req, res, next) => {
    
    var url;
    var obj;
- 
-    const Task = await userMenu.find({ perentMenu:req.body.message })
-    var bigCities = Task.filter(function (e) {
-        return e.perentMenu == "Support";
-    });
-    console.log("bigCities", bigCities);
-
-
-
-    if(Task.length===0){
+  
+    const Task1 = await userMenu.find({ perentMenu:req.body.message })
+console.log("for support",Task1, data.message)
+    if(Task1.length===0){
         if(data.message.toLowerCase()!="hi"){
-          
+            console.log("Task1Task1Task1 not Hi",Task1.length, Task1)
             obj = {
                 "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
                 "sender": data.sender,
@@ -56,10 +50,10 @@ exports.sendMessage = async (req, res, next) => {
         
         else(data.message.toLowerCase()=="hi")
            {
-          
+            console.log("Task1Task1Task1 HI",Task1.length, Task1)
             var obj2;
             var obj3;
-           
+            const Task = await userMenu.find({ perentMenu:"Menu"});
            
             Task.forEach((item, index) => {
                 let d = index + 1;
@@ -94,10 +88,10 @@ exports.sendMessage = async (req, res, next) => {
     else{
 
    
-      
+        // console.log("Task1Task1Task1 Task1.length != 0",Task1.length, Task1)
         var obj2;
         var obj3;
-      
+        const Task = await userMenu.find({ perentMenu:data.message});
        
         Task.forEach((item, index) => {
             let d = index + 1;
@@ -107,9 +101,7 @@ exports.sendMessage = async (req, res, next) => {
             myObj[dynamicKey] = item.menuTitle;
             menuData.push(myObj);
             obj2 = menuData;
-            console.log("boj1:", obj2);
         });
-        console.log("boj2:", obj2);
         obj2.forEach((item, index) => {
     
             obj3 = { ...obj3, ...item };
@@ -227,3 +219,6 @@ function getDataObject(data1) {
 
 
 }
+
+
+
