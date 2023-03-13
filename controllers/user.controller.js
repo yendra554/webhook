@@ -4,7 +4,7 @@ const express = require('express');
 const axios = require('axios'); 
 const router = express.Router();
 const user = require("../modals/user.modal");
-
+const userMenu = require("../modals/userMenu.modal");
 exports.getAllUsers = async (req, res, next) => {
    
     try {
@@ -15,7 +15,16 @@ exports.getAllUsers = async (req, res, next) => {
         throw new Error(err);
     }
 }
-
+exports.getAllMenu = async (req, res, next) => {
+   
+    try {
+       const Task = await userMenu.find();
+  
+        res.send(Task);
+    } catch (err) {
+        throw new Error(err);
+    }
+}
 
 exports.signup = async (req, res) => {
    
@@ -154,29 +163,5 @@ exports.login = async(req, res) => {
 
 }
 
-// exports.deleteUser = async(req, res) => {
 
-
-// user.find({ mobileNo:req.params.id}, function (err, data) {
-//     if (err) {
-//     //   callback(err);
-    
-//     console.log("err");
-//     } else {
-//         user.deleteMany({
-//         mobileNo:req.params.id
-//       }, function (err, r) {
-//         if (err) {
-//             res.status(500).json({
-//                 errror: err
-//             });
-//         } else {
-//             res.status(200).json({
-//                 message: "scucess"
-//             });
-//         }
-//       });
-//     }
-//   });
-// }
 

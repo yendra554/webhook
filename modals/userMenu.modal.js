@@ -14,7 +14,10 @@ const userMenu = new mongoose.Schema({
         type: String,
         require:true,
     },
-   
+    message:{
+        type: String,
+      
+    },
 },
 { collection: 'userMenu' })
 
