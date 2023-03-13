@@ -20,16 +20,12 @@ exports.sendMessage = async (req, res, next) => {
     var menuData = [];
     var newMsg1 = req.body.message;
     var newMsg;
-    // for (let i = 0; i < newMsg.length; i++) {
-    //     newMsg[i] = newMsg[i][0].toUpperCase() + newMsg[i].substr(1);
-    // }
-    // newMsg=newMsg1[0].toUpperCase();
+   
    
     const str2 = newMsg1.charAt(0).toUpperCase() + newMsg1.slice(1);
-console.log(str2);
+
 newMsg=str2;
-    
-    console.log("newMsg1newMsg1newMsg1", newMsg)
+
     var data = {
 
         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
@@ -43,9 +39,9 @@ newMsg=str2;
    var url;
    var obj;
   
-    // const Task1 = await userMenu.find({ perentMenu:req.body.message })
+ 
     const Task1 = await userMenu.find({ perentMenu:data.message })
-    console.log("for support",Task1, data.message)
+
     if(Task1.length===0){
         if(data.message!="Hi"){
             console.log("Task1Task1Task1 not Hi",Task1.length, Task1)
