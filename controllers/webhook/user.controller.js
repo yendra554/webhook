@@ -78,7 +78,7 @@ if((Task1.length === 0)){
                 "sender": data.sender,
                 "number": data.number,
                 "footer": "You are in main menu",
-                "message": "Please Select the options ",
+                "message": "Wellcome to Chat Bot CRM.\n\rPlease Select the options ",
                 "name": "Main Menu",
                 "title": "Main Menu",
 
