@@ -79,8 +79,8 @@ if((Task1.length === 0)){
                 "number": data.number,
                 "footer": "You are in main menu",
                 "message": "Please Select the options ",
-                "name": "Menu",
-                "title": "Account creation",
+                "name": "Main Menu",
+                "title": "Main Menu",
 
             }
 
