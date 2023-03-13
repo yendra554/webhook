@@ -41,7 +41,7 @@ exports.sendMessage = async (req, res, next) => {
     const Task1 = await userMenu.find({ perentMenu:data.message })
     console.log("for support",Task1, data.message)
     if(Task1.length===0){
-        if(data.message.toLowerCase()!="hi"){
+        if(data.message!="Hi"){
             console.log("Task1Task1Task1 not Hi",Task1.length, Task1)
             obj = {
                 "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
@@ -55,7 +55,7 @@ exports.sendMessage = async (req, res, next) => {
             url = "https://watzapi.in/send-message";
         }
         
-        else(data.message.toLowerCase()=="hi")
+        else(data.message=="hi")
            {
             console.log("Task1Task1Task1 HI",Task1.length, Task1)
             var obj2;
