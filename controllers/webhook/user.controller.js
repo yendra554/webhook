@@ -18,13 +18,14 @@ exports.getAllUsers = async (req, res, next) => {
 
 exports.sendMessage = async (req, res, next) => {
     var menuData = [];
-    var newMsg = req.body.message.split(" ");
+    var newMsg1 = req.body.message.split(" ");
    
     // for (let i = 0; i < newMsg.length; i++) {
     //     newMsg[i] = newMsg[i][0].toUpperCase() + newMsg[i].substr(1);
     // }
     newMsg[0].toUpperCase();
-    newMsg.join(" ");
+    // newMsg.join(" ");
+    newMsg=newMsg1;
     var data = {
 
         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
