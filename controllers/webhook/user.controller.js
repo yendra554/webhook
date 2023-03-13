@@ -18,12 +18,15 @@ exports.getAllUsers = async (req, res, next) => {
 
 exports.sendMessage = async (req, res, next) => {
     var menuData = [];
+    for (let i = 0; i < req.body.message; i++) {
+        req.body.message[i] = req.body.message[i][0].toUpperCase() + req.body.message[i].substr(1);
+    }
     var data = {
 
         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
         "sender": 919354869926,
         "number": req.body.number,
-        "message": req.body.message.toCapitalizeCase()
+        "message": req.body.message
 
 
     }
