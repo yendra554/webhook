@@ -107,7 +107,9 @@ exports.sendMessage = async (req, res, next) => {
             myObj[dynamicKey] = item.menuTitle;
             menuData.push(myObj);
             obj2 = menuData;
+            console.log("boj1:", obj2);
         });
+        console.log("boj2:", obj2);
         obj2.forEach((item, index) => {
     
             obj3 = { ...obj3, ...item };
