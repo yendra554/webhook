@@ -31,7 +31,7 @@ exports.sendMessage = async (req, res, next) => {
    var url;
    var obj;
  
-    const Task1 = await userMenu.find({ perentMenu:req.body.message })
+    const Task1 = await userMenu.find({ perentMenu:"Support" })
 console.log("for support",Task1, data.message)
     if(Task1.length===0){
         if(data.message.toLowerCase()!="hi"){
