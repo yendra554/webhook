@@ -24,8 +24,10 @@ exports.sendMessage = async (req, res, next) => {
     //     newMsg[i] = newMsg[i][0].toUpperCase() + newMsg[i].substr(1);
     // }
     newMsg1[0].toUpperCase();
+   
     // newMsg.join(" ");
-    newMsg=newMsg1;
+    newMsg=newMsg1.toString();;
+    console.log("newMsg1newMsg1newMsg1", newMsg)
     var data = {
 
         "api_key": "2dv2PJ4X196rOeHM7sWN2CKFf3uy1I",
