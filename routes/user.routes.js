@@ -9,8 +9,10 @@ router.post("/webhook" , webhookcontroller.sendMessage);
 
 router.post("/sendMessage" , webhookcontroller.sendMessage);
 router.get("/getAllusers/" , userController.getAllUsers);
-router.get("/getAllMenu/" , userController.getAllMenu);
+router.post("/getAllMenu/" , userController.getAllMenu);
 router.post("/signup/", userController.signup);
+router.post("/encrypt/", userController.encrypt);
+
 router.post("/updateUser/", userController.updateUser);
  router.post("/createMenu" , userService.createMenu);
  router.get("/getMenu/:id" , userService.getMenu);

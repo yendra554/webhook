@@ -5,6 +5,8 @@ const axios = require('axios');
 const router = express.Router();
 const user = require("../modals/user.modal");
 const userMenu = require("../modals/userMenu.modal");
+var CryptoJS = require("crypto-js");
+
 exports.getAllUsers = async (req, res, next) => {
    
     try {
@@ -163,5 +165,37 @@ exports.login = async(req, res) => {
 
 }
 
+
+exports.encrypt = async (req, res) => {
+   
+    try {
+        var ciphertext = CryptoJS.DES.encrypt(req.body.mobileNo, 'secret key 123').toString();
+
+        // Decrypt
+        var bytes  = CryptoJS.DES.decrypt(ciphertext, 'secret key 123');
+        var originalText = bytes.toString(CryptoJS.enc.Utf8);
+        
+        console.log("orignal", originalText, "ciphertext", ciphertext); // 'my message'
+        var data = [{id: 1}, {id: 2}]
+        var ciphertext = CryptoJS.AES.encrypt(JSON.stringify(data), 'secret key 123').toString();
+
+              
+            res.json({
+                status: true,
+                message: ciphertext
+            });
+       
+
+    
+
+   
+    } catch (error) {
+        res.status(400).json({
+            message: "Something went wrong."
+        });
+    }
+
+
+}
 
 
